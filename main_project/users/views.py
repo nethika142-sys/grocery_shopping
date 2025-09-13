@@ -153,6 +153,50 @@ def search_product(request):
 
     return render(request, 'users/search.html', {'products': products, 'query': query, 'discount': discount})    
 
+
+def place_order(request):
+    user_id= request.session.get('users_id')
+    if not user_id:
+        return redirect('userlogin')
+    
+    user= get_object_or_404(UserRegister, id= user_id)
+    cart_items= Cart.objects.filter(user= user)
+
+    if not cart_items.exists():
+        return redirect('cartview')
+    
+    for item in cart_items:
+        Order.objects.create(user=user,
+                             product= item.product,
+                             quantity= item.quantity,
+                             address="user address")
+    cart_items.delete()
+    return redirect('orderview')
+
+def order_view(request):
+    user_id= request.session.get('users_id')
+    if not user_id:
+        return redirect('userlogin')
+    user=get_object_or_404(UserRegister, id=user_id)
+    orders= Order.objects.filter(user=user).order_by('-order_date')
+    
+    return render(request, 'users/orderview.html',{'orders':orders})
+
+def cancel_order(request, order_id):
+    user_id= request.session.get('users_id')
+    if not user_id:
+        return redirect('userlogin')
+    
+    user= get_object_or_404(UserRegister, id=user_id)
+    order= get_object_or_404(Order, id=order_id, user=user)
+
+    if order.status == 'Pending': order.status = 'Cancelled'
+    order.save()
+
+    return redirect('orderview')
+
+
+
       
 
 

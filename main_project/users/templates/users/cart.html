@@ -30,7 +30,7 @@
           <div class="card-footer" style="background-color: rgb(240, 156, 97) ;">
 
              <a href="{% url 'removefromcart' item.product.id %}" class="btn btn-danger" style="width: 100%;">Remove from Cart</a><br>
-             <a href="#" class="btn btn-success mt-2" style="width: 100%;">check out</a>
+             <a href="{% url 'placeorder' %}" class="btn btn-success mt-2" style="width: 100%;">Place Order</a>
 
          </div>
 

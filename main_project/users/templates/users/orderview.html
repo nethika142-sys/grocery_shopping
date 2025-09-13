@@ -1,0 +1,60 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">My Orders</h2>
+
+    {% if orders %}
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Order ID</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+           
+
+            <tr>
+    <td>{{ order.id }}</td>
+    <td>{{ order.product.name }}</td>
+    <td>{{ order.quantity }}</td>
+    <td>{{ order.total_price }}</td>
+
+    <!-- Single Status column with Cancel button -->
+    <td>
+        {% if order.status == "Pending" %}
+            <span class="text-success">{{ order.status }}</span>
+            <a href="{% url 'cancelorder' order.id %}" class="btn btn-danger btn-sm ms-2">Cancel Order</a>
+        {% elif order.status == "Cancelled" %}
+            <span class="text-danger">{{ order.status }}</span>
+        {% else %}
+            <span class="text-muted">{{ order.status }}</span>
+        {% endif %}
+    </td>
+
+    <td>{{ order.order_date }}</td>
+</tr>
+
+
+
+
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>You have no orders yet.</p>
+    {% endif %}
+
+    <a href="{% url 'shopnow' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+</div>
+
+
+{% endblock %}

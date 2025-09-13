@@ -41,5 +41,11 @@ urlpatterns= [
 
     re_path('searchproduct/', views.search_product, name='searchproduct'),
 
+    re_path('placeorder/', views.place_order, name='placeorder'),
+
+    re_path('orderview/', views.order_view, name='orderview'),
+
+    re_path('^cancelorder/(\d+)$', views.cancel_order, name='cancelorder'),
+
     
 ]
