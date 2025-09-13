@@ -1,0 +1,48 @@
+{% extends "owner/header.html" %}
+
+{% block content %}
+
+<div class="container mt-2">
+
+   
+            <h2>Apply Offers And Discounts For All Products</h2>
+    
+
+            <table class="table table-bordered mt-5">
+             <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>discount</th>
+                    <th style="width: 250px;">Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for p in products %}
+                <tr>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.price }}</td>
+                    <td>{{ p.discount_percent }}%</td>
+                    <td>
+                         <a href="{% url 'set_discount' p.id %}" class="btn btn-sm">Set discount</a>
+                         <a href="{% url 'edit_price' p.id %}" class="btn btn-sm ms-4">Edit Price</a>
+                    </td>
+                   
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No products found</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            </table>    
+          
+
+
+</div>
+
+{% endblock %}

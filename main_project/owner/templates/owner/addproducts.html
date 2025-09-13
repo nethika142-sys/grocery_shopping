@@ -1,0 +1,67 @@
+{% extends "owner/header.html" %}
+
+{% block content %}
+
+<h2>Add Products</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="card mt-4">
+
+    <div class="mb-3">
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" name="name" id="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" id="description" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="price" id="price" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" name="quantity" id="quantity" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="place" class="form-label">Place</label>
+        <input type="text" name="place" id="place" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+         <label for="shopname" class="form-label">shop name</label>
+        <input type="text" name="shopname" id="shopname" class="form-control" required>
+
+
+    </div>
+
+    <div class="mb-3">
+        <label for="imagefile" class="form-label">Upload Product image</label>
+        <input type="file" name="imagefile" id="imagefile" class="form-control" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="category" id="category" class="form-select" required>
+            <option value="">-- Select Category --</option>
+            {% for cat in category %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn text-dark" style="width: 80px; height:40px;" >Submit</button>
+
+  </div>  
+
+
+</form>
+
+{% endblock %}

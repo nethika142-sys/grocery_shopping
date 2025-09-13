@@ -1,0 +1,20 @@
+{% extends "owner/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h2>Edit price for {{ product.name }}</h2>
+
+<form method="POST" action="{% url 'edit_price' product.id %}">
+
+    {% csrf_token %}
+
+    <label for="price">Current price</label>
+    <input type="number" name="price" step="0.01" value="{{ product.price }}">
+
+    <button type="submit">Update</button>
+</form>
+
+{% endblock %}
+

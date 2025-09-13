@@ -1,0 +1,76 @@
+{% extends "owner/header.html" %}
+
+{% block content %}
+
+
+<div class="container mt-4">
+
+    <div class="card">
+    <h2>Edit Products</h2>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'updateproducts' product.id %}">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" id="name" value="{{ product.name }}" class="form-control" required>
+        </div>
+
+
+        <div class="mb-3">
+             <label for="description" class="form-label">Description</label>
+             <textarea name="description" class="form-control" id="description" rows="3" required>{{ product.description }}</textarea>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="price" id="price" class="form-control" value="{{ product.price }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" name="quantity" id=quantity class="form-control" value="{{ product.quantity }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="place" class="form-label">Place</label>
+            <input type="text" name="place" id="place" class="form-control" value="{{ product.place }}"required>
+        </div>
+
+        <div class="mb-3">
+             <label for="shopname" class="shopname">Shop Name</label>
+            <input type="text" name="shopname" id="shopname" class="form-control" value="{{ product.shop_name }}"   required>
+        </div>
+
+        <div class="mb-3">
+            <label for="imagefile" class="form-label">Edit Image</label>
+            <input type="file" name="imagefile" id="imagefile" class="form-control">
+            <p class="mt-2">current image</p>
+            <img src="{{ product.image.url }}" alt="current image" width="150" height="100"> 
+        </div>
+
+
+         <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="category" id="category" class="form-select" required>
+         <option value="">-- Select Category --</option>
+        {% for cat in category %}
+        <option value="{{ cat.id }}" {% if cat.id == product.category.id %}selected{% endif %}>
+            {{ cat.name }}
+        </option>
+        {% endfor %}
+        </select>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Update product</button>
+
+
+    </form>
+    </div>
+
+</div>
+
+{% endblock%}

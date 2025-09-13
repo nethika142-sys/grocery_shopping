@@ -1,0 +1,50 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+<div class="container">
+
+<div class="mt-4">  
+<h2> products in category {{ category.name }} </h2>
+</div>
+
+    <div class="row mt-5 mb-4">
+
+        {% for product in products %}
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card h-100 shadow-lg" style="background-color:  rgb(240, 156, 97);">
+
+             {% if product.image %}
+                 <img src="{{ product.image.url }}" class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+             {% endif %}
+
+            <div class="card-body mt-2">    
+                    <h6><strong>{{ product.name }}</strong></h6>
+                    <p class="text-muted">{{ product.description }}</p>
+                    <p class="mb-2"><strong>₹ 1kg {{ product.price }}</strong></p>
+                    <p class="mb-2">Stock: {{ product.quantity }}</p>
+                    <p class="mb-2">Category: {{ product.category.name }}</p>
+            </div>
+
+            <div class="card-footer">
+
+                <a href="{% url 'addtowishlist' product.id %}" class="btn" style="width: 100%; background-color: beige;" >add to wishlist</a><br>
+                <a href="{% url 'addtocart' product.id %}" class="btn mt-2" style="width: 100%; background-color: beige;">add to cart</a>
+
+            </div>
+
+            </div>
+        </div>
+
+        {% endfor %}    
+    </div> 
+</div>   
+
+        
+
+{% endblock %}

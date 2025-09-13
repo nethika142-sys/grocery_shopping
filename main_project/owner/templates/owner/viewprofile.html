@@ -1,0 +1,31 @@
+{% extends "owner/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center ">
+
+                 <h2 class="mt-3">My profile</h2>
+
+                 <img src="{% static 'images/avatarimg.png ' %}" style="width: 250px;" class="mt-4">
+
+
+                <div class="mt-4 text-center">
+                   <p><strong>Name:  {{ user.name }}</strong></p>
+                   <P><strong>Email:  {{ user.email }}</strong></P>
+                   <p><strong>Phone:   {{ user.phone }}</strong></p>
+                </div>
+
+            </div>
+            
+        </div>    
+    </div>
+</div>
+
+
+{% endblock %}

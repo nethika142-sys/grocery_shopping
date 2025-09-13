@@ -1,0 +1,48 @@
+{% extends "users/base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <h2 class="mt-4">Cart</h2>
+
+        <div class="row">
+        {% for item in cartitems %}
+
+         <div class="col-md-3 col-sm-6">
+
+            <div class="card shadow-lg mt-5" style="background-color: rgb(240, 156, 97);;">
+
+              {% if item.product.image %}
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                 class="img-fluid" style="height: 200px; object-fit: cover;">
+              {% endif %}
+
+            <div class="card-body">
+              <h6>{{ item.product.name }}</h6>
+              <p class="small text-muted mb-1">{{ item.product.description }}</p>
+              <p class="mb-2"><strong> ₹{{ item.product.price }}</strong></p>
+              <p class="mb-2">Stock:{{ item.product.quantity }}</p>
+              <p class="mb-2">Category: {{ item.product.category.name }}</p>
+           </div>
+
+          <div class="card-footer" style="background-color: rgb(240, 156, 97) ;">
+
+             <a href="{% url 'removefromcart' item.product.id %}" class="btn btn-danger" style="width: 100%;">Remove from Cart</a><br>
+             <a href="#" class="btn btn-success mt-2" style="width: 100%;">check out</a>
+
+         </div>
+
+          </div>
+        </div>
+
+            {% empty %}
+            <p>No items in your wishlist.</p>
+            {% endfor %}
+
+        </div>
+</div>        
+
+
+{% endblock %}

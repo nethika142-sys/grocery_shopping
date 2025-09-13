@@ -1,0 +1,52 @@
+{% extends "owner/header.html" %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-between align-items-center mb-3 ms-5">
+<h2>Manage All Products</h2>
+
+
+<a href="{% url 'addproducts' %}" class="btn button">Add Products</a>
+</div>
+
+<div class="container">
+     <div class="row">
+       
+            {% for product in products %}
+            <div class="col-md-4">
+                <div class="card h-80 mt-4">
+
+                    <img src="{{ product.image.url }}" class="card-img-top img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
+                    
+
+                    <div class="card-body">
+                        <p >product name:  {{ product.name }}</p>
+                        <p>Description:  {{ product.description }}</p>
+                        <p>price:  1kg {{ product.price }}</p>
+                        <p>Quantity:  {{ product.quantity}}</p>
+                        <P>Category: {{ product.category.name }}</P>
+                        <p>place: {{ product.place }}</p>
+                        <p>shop name: {{ product.shop_name }}</p>
+                    </div>
+
+                  
+                    <a href="{% url 'editproducts' product.id %}" class="btn" style="width: 350px;">Edit</a><br>
+                    
+
+                    <a href="{% url 'delproduct' product.id %}" class="btn" style="width: 350px;" >Delete</a>
+                  
+                    
+                </div>
+            </div>
+
+            {% empty %}
+        
+             <p>No products available</p>
+
+            {% endfor %}    
+
+</div>
+</div>
+    
+{% endblock %}

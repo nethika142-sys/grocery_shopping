@@ -1,0 +1,16 @@
+{% extends "owner/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h2>Set discount for {{ product.name }}</h2>
+
+<form method="POST" action="{% url 'set_discount' product.id %}">
+    {% csrf_token %}
+    <label>Discount percent:</label>
+    <input type="number" name="discountpercent" value="{{ product.discountpercent }}">
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}

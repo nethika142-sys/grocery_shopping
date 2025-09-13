@@ -1,0 +1,79 @@
+{% extends "users/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <h2 class="text-center mt-4">About Easy Shopping</h2>
+
+<div class="mt-4">    
+    <h3>Fresh groceries delivered to your doorstep — fast, simple, and reliable!</h3>
+</div>
+
+
+    <div class="row">
+        <div class="col-md-6 mt-4">
+            <p><strong>Who we are:</strong><br>
+             Easy Shopping is your friendly online grocery store dedicated to making your life easier. 
+            We provide a wide range of fresh fruits, vegetables, pantry staples, and daily essentials—all delivered right to your doorstep.
+           </p>
+
+
+            <p><strong>Our Mission:</strong>
+              Our mission is to combine convenience, quality, and reliability. 
+             We carefully select products, partner with trusted local suppliers, and ensure timely delivery so you can focus on what really matters—your family and your time.
+            </p>
+
+            <p><strong>Our Vision:</strong>
+                Our vision to be the most trusted online grocery partner, making healthy and sustainable living accessible to every household.
+            </p>
+            
+
+            <p><strong>Why Choose Us:</strong><br>
+            We believe grocery shopping should be simple, enjoyable, and stress-free. 
+            With Easy Shopping, you get fresh products, transparent pricing, and a smooth online shopping experience. Thousands of happy customers trust us for their daily needs.
+            </p>
+
+        </div>    
+
+        <div class="col-md-6 d-flex flex-column gap-3 mt-4">
+
+           <div class="highlight-card d-flex align-items-center gap-3">
+            <img src="{% static 'images/groceryimage.jpg' %}" style="width: 200px; height:auto;">
+           <div>
+                 <i class="bi bi-box-seam"><strong> 500+ Products</strong></i>
+                 <p>Fresh and quality products for your daily needs.</p>
+            </div>
+        </div>
+
+        
+
+            <div class="highlight-card d-flex align-items-center gap-3">
+                 <img src="{% static 'images/customerimage.jpg' %}" style="width: 200px; height: auto;">
+            <div>    
+                 <i class="bi bi-people"><strong>  1000+ Happy Customers</strong></i>
+                 <p>Trusted by thousands for convenient grocery shopping.</p>
+            </div>     
+        </div>    
+
+      
+            <div class="highlight-card d-flex align-items-center gap-3">
+                <img src="{% static 'images/grocerydelivery.jpg' %}" style="width: 200px; height: auto;">
+                
+            <div> 
+                 <i class="bi bi-truck"><strong>  Fast Delivery</strong></i>
+                 <p>Reliable and timely delivery straight to your doorstep.</p>
+            </div>     
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

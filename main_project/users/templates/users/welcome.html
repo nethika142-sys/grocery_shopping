@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container-fluid welcomepage">
+
+        <div class="row d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+            
+
+            <div class="col-md-6 d-flex flex-column align-items-center">
+
+                
+
+                <!-- <div class="card d-flex flex-column align-items-center"> -->
+
+        
+
+    
+                     <div class="text-center">
+                        <h1 class="mb-5">Welcome to Easy Shopping</h1>
+                        <h2 class="mb-4">Fresh groceries delivered to your doorstep — fast, simple, and reliable!</h2>
+
+                     
+                        <a href="{% url 'user_getstarted' %}" class="btn btn-danger text-dark w-30 rounded-pill">get started</a>
+                        <a href="{% url 'loginpage' %}" class="btn btn-danger text-dark w-30 rounded-pill">I have an account</a>
+                 
+
+                    </div>
+                <!-- </div> -->
+            </div>
+
+           
+      </div>
+
+    </div>
+    
+</body>
+</html>

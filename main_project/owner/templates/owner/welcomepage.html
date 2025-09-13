@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/products.style.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+         <!-- <div class="card welcome-card" style="width: 600px; height: 500px;"> -->
+
+            <div class=" welcome-text text-center">
+            <h1 class="mb-4">Welcome To The Owner Panel</h1>
+
+            <h2 class="mb-5">Stay Healthy With Fresh Grocery</h2>
+            
+            <h3 class="mb-5">You can manage your products with ease here.</h3>
+
+            
+                <a href="{% url 'signup' %}" class="btn" style="background-color:  chocolate;">Get Started</button></a>
+                <a href="{% url 'login' %}" class="btn ms-3" style="background-color: chocolate;">I have an account</button></a>
+             
+        </div>
+
+   </div> 
+
+
+</body>
+</html>

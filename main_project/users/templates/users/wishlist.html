@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+
+        <h2 class="mt-5">My Wishlist</h2>
+
+        <div class="row mt-5">
+            {% for item in wishlistitems %}
+            <div class="col-md-3 col-sm-6 mb-4">
+
+                <div class="card h-100 shadow-lg" style="background-color: rgb(240, 156, 97);">
+
+                     {% if item.product.image %}
+                     <img src="{{ item.product.image.url }}" 
+                      alt="{{ item.product.name }}"
+                      class="img-fluid" style="height: 200px; object-fit: cover;">
+                     {% endif %}
+
+                <div class="card-body">
+                    <h6 class="card-title">{{ item.product.name }}</h6>
+                    <p class="small text-muted mb-1">{{ item.product.description }}</p>
+                    <p class="mb-1"><strong>₹ 1kg {{ item.product.price }}</strong></p>
+                    <p class="mb-1">stock:  {{ item.product.quantity}}</p>
+                    <P class="mb-2">Category: {{ item.product.category.name }}</P>
+                </div>
+
+
+                <div class="card-footer">
+
+                    <a href="{% url 'removefromwishlist' item.product.id %}" class="btn btn-danger" style="width: 100%;">Remove from Wishlist</a><br>
+                    <a href="{% url 'addtocart' item.product.id %}" class="btn btn-success mt-2" style="width: 100%;">Add to Cart</a>
+                
+                </div>
+
+                </div>
+                </div>
+
+                {% empty %}
+                 <p>No items in your wishlist.</p>
+                 {% endfor %}
+
+        </div>
+ </div>         
+
+
+{% endblock %}

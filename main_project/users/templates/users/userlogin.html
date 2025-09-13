@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+
+    
+    <form method="POST" action="{% url 'user_login' %}">
+      {% csrf_token %}
+
+      <div class="container-fluid welcomepage d-flex justify-content-center align-items-center">
+
+        <div class="card p-4 mt-5 login-card" style="width: 350px; height: 450px;">
+            
+            <div class="mt-4 mb-4 text-center">
+            <h2>Login</h2>
+            </div>
+      
+            <div class="mt-4 mb-4 text-start">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mt-4 mb-4 text-start">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+
+            <div class="text-center mb-4">
+            <button type="submit" class="btn mt-5 w-50 rounded-pill btn-danger text-dark"> Login</button>
+            </div>
+
+        </div>
+    </div>
+    
+    </form>
+   
+
+
+</body>
+</html>

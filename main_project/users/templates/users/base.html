@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg px-3" style="background-color: rgb(240, 156, 97); height: 150px;">
+  <div class="container-fluid">
+    
+    <div class="d-flex flex-column align-items-center mt-5">
+     <img src="{% static 'images/logoimage.png' %}" style="width: 50px;">
+    <p>Easy Shopping</p>
+    </div>
+
+    <!-- Links -->
+    <ul class="navbar-nav  mb-lg-0 ms-3">
+      <li class="nav-item"><a class="nav-link" href="{% url 'userhome' %}">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'aboutus' %}">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'shopnow' %}">Shop</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'categorypage' %}">Category</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
+    </ul>
+
+    <!-- Search bar -->
+    <form class="d-flex me-3" style="width: 700px;" role="search" method="get" action="{% url 'searchproduct' %}">
+      <input class="form-control me-2" type="search" name="search" placeholder="Search" value="{{ query }}">
+
+      <select name="discount" class="form-select me-2" style="max-width: 130px;">
+        <option value="">Discounts</option>
+        <option value="10" {% if discount == "10" %} selected {% endif %}>10% or more</option> 
+        <option value="20" {% if discount == "20" %}selected{% endif %}>20% or more</option>
+        <option value="30" {% if discount == "30" %}selected{% endif %}>30% or more</option>
+      </select>
+
+
+      <button class="btn" style="background-color: white;" type="submit">Search</button>
+    </form>
+
+    <!-- Icons -->
+    
+    <a href="{% url 'profile' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-person"></i><span>profile</span></a>
+    <a href="{% url 'wishlistview' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-heart"></i><span>wishlist</span></a>
+    <a href="{% url 'cartview' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-cart4"></i><span>Cart</span></a>
+  
+</nav>
+
+
+
+<main class="container-fluid">
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+
+</body>
+</html>

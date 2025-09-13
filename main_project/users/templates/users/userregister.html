@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    
+  <form method="POST" action="{% url 'user_register' %}">
+        {% csrf_token %}
+
+        <div class="container-fluid welcomepage d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+            <div class="card register-card p-3 mt-4" style="max-width:450px; height: 560px;">
+
+                <div class=" text-center mb-1">
+                    <h2>Register</h2>
+                </div>    
+
+                <div class="text-start">
+                <label for="name">Name:</label>
+                <input type="text" name="name" class="form-control" required>
+            
+
+             <div class="text-start">
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control" required>
+             </div>
+
+            
+              <div class="text-start">
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" class="form-control" required>
+             </div> 
+
+
+              <div class="text-start">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="text-start">                 
+                <label for="confirmpassword">Confirm Password:</label>
+                <input type="password" name="confirmpassword" class="form-control" required>
+                <div class="form-text">
+                <p><b>Use 8 or more characters with a mix of letters, numbers, and symbols.</b></p>
+                </div>
+            </div>
+
+
+            <div class="text-center">
+            <button type="submit" class="btn btn-danger w-50 mb-2 rounded-pill login-btn text-dark"> Register</button>
+            <p><b>Already have an account? </b><br><a href="{% url 'loginpage' %}" class="btn btn-danger w-50 mt-2 rounded-pill text-dark">Login here</a></p>
+            </div>
+
+            </div>
+
+                
+
+            </div>
+        </div>
+
+
+
+    </form>
+
+
+
+</body>
+</html>

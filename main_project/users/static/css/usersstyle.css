@@ -1,0 +1,71 @@
+body{
+    background-color: beige;
+
+}
+
+body {
+    font-family: 'Pacifico', cursive;
+}
+
+h1 {
+    font-family: 'pacifico', cursive;
+}
+
+h2{
+    font-family: 'pacifico', cursive;  
+}
+
+
+
+/* .homepage{
+
+    background-image: url("../images/projectimghome.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+
+} */
+
+
+
+.homepage{
+    background-color: beige;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.welcomepage{
+    background-image: url("../images/projectimghome.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
+
+ .login-card{
+    background-color: rgb(224, 175, 139);
+    backdrop-filter: blur(8px); 
+    border-radius: 20px; 
+    border: 1px solid rgb(194, 147, 113);
+}
+
+.register-card{
+
+    background-color: rgb(224, 175, 139);
+    backdrop-filter: blur(8px); 
+    border-radius: 20px; 
+    border: 1px solid rgb(194, 147, 113);
+    
+}
+
+
+
+ .home-card{
+    margin-right: 0;
+    margin: 0;
+    padding: 0;
+ }
