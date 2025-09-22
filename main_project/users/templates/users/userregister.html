@@ -6,9 +6,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> -->
     <title>Document</title>
 </head>
 <body>
@@ -18,7 +16,7 @@
 
         <div class="container-fluid welcomepage d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 
-            <div class="card register-card p-3 mt-4" style="max-width:450px; height: 560px;">
+            <div class="card register-card p-3 mt-4" style="max-width:450px; height: auto">
 
                 <div class=" text-center mb-1">
                     <h2>Register</h2>
@@ -26,19 +24,28 @@
 
                 <div class="text-start">
                 <label for="name">Name:</label>
-                <input type="text" name="name" class="form-control" required>
+                <input type="text" name="name" class="form-control" value="{{ name|default:'' }}" required>
+                </div>
             
 
-             <div class="text-start">
+                <div class="text-start">
                 <label for="email">Email:</label>
-                <input type="email" name="email" class="form-control" required>
-             </div>
+                <input type="email" name="email" class="form-control" value="{{ email|default:''}}" required>
+
+            {% if email_error %}
+             <p class="text-danger mb-1"> {{ email_error }}</p>
+             {% endif %}
+            </div> 
 
             
               <div class="text-start">
                 <label for="phone">Phone:</label>
                 <input type="text" name="phone" class="form-control" required>
-             </div> 
+             
+            {% if phone_error %}
+             <p class="text-danger"> {{ phone_error }}</p>
+             {% endif %}
+             </div>
 
 
               <div class="text-start">
@@ -52,26 +59,22 @@
                 <div class="form-text">
                 <p><b>Use 8 or more characters with a mix of letters, numbers, and symbols.</b></p>
                 </div>
+            {% if password_error %}
+            <p class="text-danger">{{ password_error }}</p>
+            {% endif %}
             </div>
-
 
             <div class="text-center">
-            <button type="submit" class="btn btn-danger w-50 mb-2 rounded-pill login-btn text-dark"> Register</button>
-            <p><b>Already have an account? </b><br><a href="{% url 'loginpage' %}" class="btn btn-danger w-50 mt-2 rounded-pill text-dark">Login here</a></p>
+            <button type="submit" class="btn btn-danger w-50 mb-2 rounded-pill login-btn text-dark"> Register</button><br>
+            <b>Already have an account? </b><br>
+            <a href="{% url 'loginpage' %}" class="btn btn-danger w-50 rounded-pill text-dark">Login here</a>
             </div>
 
-            </div>
+           </div>
 
-                
-
-            </div>
         </div>
 
-
-
     </form>
-
-
 
 </body>
 </html>

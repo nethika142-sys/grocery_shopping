@@ -2,6 +2,53 @@
 
 {% block content%}
 
-<h2>All Customer Orders</h2>
+<div class="container mt-4">
+    <h2>User Orders</h2>
+    <div class="table-responsive">
+    <table class="table table-bordered border-dark rounded my-custom-table align-middle mt-4">
+        <thead >
+            <tr>
+                <th>User Id </th>
+                <th>User</th>
+                <th>Email</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Order Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+        {% for order in orders %}
+            <tr>
+            <td>{{ order.user.id }}</td>    
+            <td>{{ order.user.name }}</td>
+            <td>{{ order.user.email }}</td>
+            <td>{{ order.product.name }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.total_price }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>
+                {% if order.status == "Cancelled" %}
+                    <span class="btn btn-danger btn-sm text-dark" style="background-color: rgb(245, 67, 67); width: 30%;">Cancelled</span>
+
+                {% elif order.status == "Pending" %}
+                     <span class="btn btn-sm text-dark" style="background-color: rgb(243, 177, 10); width: 30%;">Pending</span>
+                     <a href="{% url 'markcompleted' order.id %}" class="btn btn-success btn-sm ms-2 text-dark ms-4" style="background-color: rgb(117, 228, 117)">Mark Completed</a>
+
+                {% elif order.status == "Completed" %}
+                     <span class="btn btn-sm" style="background-color: rgb(117, 228, 117); width: 30%;">Completed</span>
+                 {% endif %}
+            </td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+    </div>
+</div>
 
 {% endblock %}

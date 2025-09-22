@@ -2,51 +2,46 @@
 
 {% block content %}
 
-
 <div class="d-flex justify-content-between align-items-center mb-3 ms-5">
-<h2>Manage All Products</h2>
-
-
-<a href="{% url 'addproducts' %}" class="btn button">Add Products</a>
+  <h2 class="ms-5">Manage All Products</h2>
+  <a href="{% url 'addproducts' %}" class="btn">Add Products</a>
 </div>
 
 <div class="container">
-     <div class="row">
+  <div class="row">
        
-            {% for product in products %}
-            <div class="col-md-4">
-                <div class="card h-80 mt-4">
+    {% for product in products %}
+    <div class="col-md-3 col-sm-6 mb-4">
+      <div class="card mt-4 shadow-lg" style="height: 100%;">
 
-                    <img src="{{ product.image.url }}" class="card-img-top img-fluid" style="height: 200px; width: 100%; object-fit: cover;">
-                    
+        <!-- Product Image -->
+        <img src="{{ product.image.url }}" class="img-fluid" style="height: 200px; object-fit: cover;">
 
-                    <div class="card-body">
-                        <p >product name:  {{ product.name }}</p>
-                        <p>Description:  {{ product.description }}</p>
-                        <p>price:  1kg {{ product.price }}</p>
-                        <p>Quantity:  {{ product.quantity}}</p>
-                        <P>Category: {{ product.category.name }}</P>
-                        <p>place: {{ product.place }}</p>
-                        <p>shop name: {{ product.shop_name }}</p>
-                    </div>
+        <!-- Product Body -->
+        <div class="card-body p-2">
+          <h6 class="card-title">{{ product.name }}</h6>
+          <p class="small text-muted mb-1">{{ product.description }}</p>
+          <p class="mb-1"><strong>₹ 1kg {{ product.price }}</strong></p>
+          <p class="mb-1">Stock: {{ product.quantity }}</p>
+          <p class="mb-2">Category: {{ product.category.name }}</p>
+          <p class="mb-2">Place: {{ product.place }}</p>
+          <p class="mb-2">Shop: {{ product.shop_name }}</p>
+        </div>
 
-                  
-                    <a href="{% url 'editproducts' product.id %}" class="btn" style="width: 350px;">Edit</a><br>
-                    
-
-                    <a href="{% url 'delproduct' product.id %}" class="btn" style="width: 350px;" >Delete</a>
-                  
-                    
-                </div>
-            </div>
-
-            {% empty %}
         
-             <p>No products available</p>
+        <div class="card-footer text-center p-2" style="background-color: rgb(240, 156, 97);">
+          <a href="{% url 'editproducts' product.id %}" class="btn btn-sm w-100 mb-2">Edit</a>
+          <a href="{% url 'delproduct' product.id %}" class="btn btn-sm w-100">Delete</a>
+        </div>
 
-            {% endfor %}    
+      </div>
+    </div>
 
+    {% empty %}
+      <p>No products available</p>
+    {% endfor %}    
+
+  </div>
 </div>
-</div>
-    
+
 {% endblock %}

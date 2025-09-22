@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="card mt-3">
+<div class="card-body mt-3">
     {% if products %}
         <ul style="list-style-type:none;">
             {% for product in products %}
@@ -15,7 +15,7 @@
                     <p>Name: {{ product.name }}</p>
                     <p>Category: {{ product.category.name }}</p>
                     <p>Description: {{ product.description }}</p>
-                    <p>Price: {{ product.price }}</p>
+                    <p>Price: <strong> 1kg {{ product.price }}</strong></p>
                     <p>Quantity: {{ product.quantity }}</p>
                     <p>Discount: {{ product.discount_percent }}%</p>
                 </li>

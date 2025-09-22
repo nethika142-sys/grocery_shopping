@@ -8,12 +8,12 @@
             <h2>Apply Offers And Discounts For All Products</h2>
     
 
-            <table class="table table-bordered mt-5">
+            <table class="table table-bordered my-custom-table align-middle mt-5">
              <thead>
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>discount</th>
+                    <th>Discount</th>
                     <th style="width: 250px;">Action</th>
                 </tr>
 
@@ -22,13 +22,13 @@
             <tbody>
 
                 {% for p in products %}
-                <tr>
+                <tr class="text-center align-middle">
                     <td>{{ p.name }}</td>
                     <td>{{ p.price }}</td>
                     <td>{{ p.discount_percent }}%</td>
                     <td>
-                         <a href="{% url 'set_discount' p.id %}" class="btn btn-sm">Set discount</a>
-                         <a href="{% url 'edit_price' p.id %}" class="btn btn-sm ms-4">Edit Price</a>
+                         <a href="{% url 'set_discount' p.id %}" class="btn btn-sm" style="background-color: beige;">Set discount</a>
+                         <a href="{% url 'edit_price' p.id %}" class="btn btn-sm ms-4" style="background-color: beige;">Edit Price</a>
                     </td>
                    
                 </tr>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <!-- <link rel="stylesheet" href="{% static 'css/products.style.css' %}" type="text/css"> -->
+    <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+
+    <body class="text-center p-5">
+    <h1>Welcome to Easy Shopping</h1>
+    <p>Select your module:</p>
+    <div class="d-flex justify-content-center gap-3">
+        <a href="{% url 'user_welcome' %}" class="btn btn-outline-danger text-dark">User</a>
+        <a href="/owner/welcome/" class="btn btn-outline-danger text-dark">Owner</a>
+        <a href="/admin/" class="btn btn-outline-danger text-dark">Admin</a>
+    </div>
+</body>
+
+
+
+</html>

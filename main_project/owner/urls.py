@@ -3,7 +3,9 @@ from .import views
 
 urlpatterns= [
 
-    re_path('^$', views.welcome, name='welcome'),
+    re_path('^$', views.landingpage, name='landingpage'),
+
+    re_path('welcome', views.welcome, name='welcome'),
 
     re_path('signup', views.signup, name='signup'),
 
@@ -37,6 +39,8 @@ urlpatterns= [
     re_path('^edit_price/(\d+)$', views.edit_price, name='edit_price'),
 
     re_path('orders', views.orders, name='orders'),
+
+    re_path('^markcompleted/(\d+)$', views.mark_completed, name='markcompleted'),
 
     re_path('viewprofile', views.viewprofile, name='viewprofile'),
 

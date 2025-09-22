@@ -47,5 +47,7 @@ urlpatterns= [
 
     re_path('^cancelorder/(\d+)$', views.cancel_order, name='cancelorder'),
 
+    re_path('userlogout', views.userlogout, name='userlogout'),
+
     
 ]

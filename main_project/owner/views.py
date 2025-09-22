@@ -4,9 +4,13 @@ from django.core.files.storage import FileSystemStorage
 from datetime import datetime
 from .models import Register
 from users.models import UserRegister
+from users.models import Order
 from django.db.models import Q
 
 # Create your views here.
+
+def landingpage(request):
+    return render(request, 'owner/landingpage.html')
 
 
 def welcome(request):
@@ -23,11 +27,26 @@ def register(request):
         phone= request.POST['phone']
         password= request.POST['password']
         confirm_password= request.POST['confirmpassword']
-        if password != confirm_password:
-            return render(request, 'owner/register.html', {'error': "passwords do not match"})
-        Register.objects.create(name=name, email=email, password=password, phone=phone)
+
+        email_error = ""
+        phone_error = ""
+        password_error = ""
+
+        if password!= confirm_password:
+            password_error= "passwords do not match"
+
+        if Register.objects.filter(email=email).exists():
+            email_error= " This email is already registered"
+
+        if Register.objects.filter(phone=phone).exists():
+            phone_error= "This phone number has been registered"  
+
+        if email_error or phone_error or password_error:
+            return render(request, 'owner/register.html', { 'name': name, 'email':email, 'phone':phone, 'password':'', 'phone_error': phone_error, 'email_error':email_error, 'password_error': password_error })    
+
+        Register.objects.create(name=name, email=email, phone=phone, password=password)
         return redirect('login')
-    return render(request, 'owner/register.html')
+    return render(request, 'owner/register.html')    
 
 
 def login(request):
@@ -50,10 +69,16 @@ def header(request):
 def home(request):
     total_products= Products.objects.count()
     total_users= UserRegister.objects.count()
+    total_orders = Order.objects.count()
+    pending_orders = Order.objects.filter(status="Pending").count()  
+   
 
     context= { 
         'total_products': total_products,
         'total_users': total_users,
+        'total_orders': total_orders,
+        'pending_orders': pending_orders
+       
     }
     return render(request, 'owner/home.html', context)
 
@@ -173,9 +198,21 @@ def edit_price(request, pid):
 
 
 
-
 def orders(request):
-    return render(request, 'owner/orders.html')
+    orders = Order.objects.all().select_related('user', 'product')
+    return render(request, 'owner/orders.html', {'orders': orders})
+
+
+def mark_completed(request, order_id):
+    
+    order = get_object_or_404(Order, id=order_id)
+    
+    # Only Pending orders can be marked Completed
+    if order.status == 'Pending':
+        order.status = 'Completed'
+        order.save()
+    
+    return redirect('orders')
 
 
 def viewprofile(request):

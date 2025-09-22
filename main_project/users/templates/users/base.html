@@ -11,46 +11,49 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg px-3" style="background-color: rgb(240, 156, 97); height: 150px;">
-  <div class="container-fluid">
-    
-    <div class="d-flex flex-column align-items-center mt-5">
-     <img src="{% static 'images/logoimage.png' %}" style="width: 50px;">
-    <p>Easy Shopping</p>
+ <nav class="navbar px-3" style="background-color: rgb(240, 156, 97); min-height: 150px;">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <!-- Logo -->
+    <div class="d-flex flex-column align-items-center me-3">
+      <img src="{% static 'images/logoimage.png' %}" class="logo-img me-4">
+      <!-- <p>Easy Shopping</p> -->
     </div>
 
     <!-- Links -->
-    <ul class="navbar-nav  mb-lg-0 ms-3">
-      <li class="nav-item"><a class="nav-link" href="{% url 'userhome' %}">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="{% url 'aboutus' %}">About Us</a></li>
-      <li class="nav-item"><a class="nav-link" href="{% url 'shopnow' %}">Shop</a></li>
-      <li class="nav-item"><a class="nav-link" href="{% url 'categorypage' %}">Category</a></li>
-      <li class="nav-item"><a class="nav-link" href="{% url 'orderview' %}">Orders</a></li>
-    </ul>
+    <div class="d-flex me-3">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'userhome' %}">Home</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'aboutus' %}">About Us</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'shopnow' %}">Shop</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'categorypage' %}">Category</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="{% url 'orderview' %}">Orders</a></li>
+      </ul>
+    </div>
 
-    <!-- Search bar -->
-    <form class="d-flex me-3" style="width: 700px;" role="search" method="get" action="{% url 'searchproduct' %}">
-      <input class="form-control me-2" type="search" name="search" placeholder="Search" value="{{ query }}">
-
-      <select name="discount" class="form-select me-2" style="max-width: 130px;">
-        <option value="">Discounts</option>
-        <option value="10" {% if discount == "10" %} selected {% endif %}>10% or more</option> 
-        <option value="20" {% if discount == "20" %}selected{% endif %}>20% or more</option>
-        <option value="30" {% if discount == "30" %}selected{% endif %}>30% or more</option>
-      </select>
-
-
-      <button class="btn" style="background-color: white;" type="submit">Search</button>
-    </form>
+    <!-- Search -->
+    <div class="flex-grow-1 me-3">
+      <form class="d-flex w-100" role="search" method="get" action="{% url 'searchproduct' %}">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" value="{{ query }}">
+        <select name="discount" class="form-select me-2" style="max-width: 130px;">
+          <option value="">Discounts</option>
+          <option value="10" {% if discount == "10" %} selected {% endif %}>10% or more</option> 
+          <option value="20" {% if discount == "20" %} selected {% endif %}>20% or more</option>
+          <option value="30" {% if discount == "30" %} selected {% endif %}>30% or more</option>
+        </select>
+        <button class="btn bg-white" type="submit">Search</button>
+      </form>
+    </div>
 
     <!-- Icons -->
-    
-    <a href="{% url 'profile' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-person"></i><span>profile</span></a>
-    <a href="{% url 'wishlistview' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-heart"></i><span>wishlist</span></a>
-    <a href="{% url 'cartview' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-cart4"></i><span>Cart</span></a>
-  
-</nav>
+    <div class="d-flex">
+      <a href="{% url 'profile' %}" class="nav-link d-flex flex-column align-items-center me-3"><i class="bi bi-person"></i><span>Profile</span></a>
+      <a href="{% url 'wishlistview' %}" class="nav-link d-flex flex-column align-items-center me-3"><i class="bi bi-heart"></i><span>Wishlist</span></a>
+      <a href="{% url 'cartview' %}" class="nav-link d-flex flex-column align-items-center"><i class="bi bi-cart4"></i><span>Cart</span></a>
+    </div>
 
+  </div>
+</nav>
 
 
 <main class="container-fluid">

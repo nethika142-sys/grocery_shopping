@@ -6,9 +6,6 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/usersstyle.css' %}" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -20,7 +17,7 @@
 
       <div class="container-fluid welcomepage d-flex justify-content-center align-items-center">
 
-        <div class="card p-4 mt-5 login-card" style="width: 350px; height: 450px;">
+        <div class="card p-4 mt-5 login-card" style="width: 350px; height: auto">
             
             <div class="mt-4 mb-4 text-center">
             <h2>Login</h2>
@@ -35,6 +32,10 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" class="form-control" required>
             </div>
+
+            {% if error %}
+            <p class="text-danger">{{ error }}</p>
+            {% endif %}
 
 
             <div class="text-center mb-4">

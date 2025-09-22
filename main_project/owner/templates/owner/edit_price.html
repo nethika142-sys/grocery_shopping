@@ -1,20 +1,38 @@
 {% extends "owner/header.html" %}
-
 {% load static %}
 
 {% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
 
-<h2>Edit price for {{ product.name }}</h2>
+        <div class="card-header text-dark text-center" style="background-color:  rgb(240, 156, 97);">
+            <h4 class="mb-0">Edit Price for {{ product.name }}</h4>
+        </div>
 
-<form method="POST" action="{% url 'edit_price' product.id %}">
+    
+        <div class="card-body text-center">
+        
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" 
+                     class="img-fluid mb-3" style="max-height: 200px; object-fit: contain;">
+            {% else %}
+                <p class="text-muted">No image available</p>
+            {% endif %}
 
-    {% csrf_token %}
+            
+            <p><strong>Current Price:</strong> ₹{{ product.price }}</p>
 
-    <label for="price">Current price</label>
-    <input type="number" name="price" step="0.01" value="{{ product.price }}">
-
-    <button type="submit">Update</button>
-</form>
-
+            
+            <form method="POST" action="{% url 'edit_price' product.id %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="price" class="form-label">New Price</label>
+                    <input type="number" name="price" step="0.01" id="price"
+                           class="form-control" value="{{ product.price }}">
+                </div>
+                <button type="submit" class="btn" style="background-color: beige;">Update Price</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
-

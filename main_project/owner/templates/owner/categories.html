@@ -4,11 +4,10 @@
 
 {% block content %}
 
-<h2>Categories page</h2>
 
 <div class="container mt-4">
     <div class="row">
-
+        <h2 class="ms-3 mb-5">Categories page</h2>
         {% for cat in categories %}
 
         <div class="col-md-4 col-sm-6 mb-4">
@@ -16,20 +15,20 @@
 
                     {% if cat.name == "fruits" %}
                          <img src="{% static 'images/fruitsimg.jpeg' %}" style="height: 200px; width: 100%; object-fit: cover;" alt="fruits">
-                         <a href="{% url 'category_products' cat.id %}" class="btn">Fruits</a>
+                         <a href="{% url 'category_products' cat.id %}" class="btn btn-addproduct">Fruits</a>
 
                      {% elif cat.name == "vegetables" %}
                         <img src="{% static 'images/vegetablesimg.jpeg' %}" style="height:200px; width: 100%; object-fit: cover;" alt="vegetables">
-                        <a href="{% url 'category_products' cat.id %}" class="btn">Vegetables</a>
+                        <a href="{% url 'category_products' cat.id %}" class="btn btn-addproduct">Vegetables</a>
 
                      {% elif cat.name == "milk and dairy products" %}
                         <img src="{% static 'images/milkanddairyimg.jpeg' %}" style="height: 200px; width: 100%; object-fit: cover;" alt="milkanddairyimg">    
-                        <a href="{% url 'category_products' cat.id %}" class="btn">Milk and Dairy Products</a>
+                        <a href="{% url 'category_products' cat.id %}" class="btn btn-addproduct">Milk and Dairy Products</a>
 
                      {% else %}
 
                         <img src="{% static 'images/snacksimg.jpeg' %}" style="height: 200px; width: 100%; object-fit: cover;" alt="snacks">    
-                        <a href="{% url 'category_products' cat.id %}" class="btn">Snacks</a>
+                        <a href="{% url 'category_products' cat.id %}" class="btn btn-addproduct">Snacks</a>
 
 
 

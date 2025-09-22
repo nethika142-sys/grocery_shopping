@@ -23,12 +23,33 @@ def  registerview(request):
         password= request.POST['password']
         confirm_password= request.POST['confirmpassword']
 
-        if password != confirm_password:
-            return render(request, 'users/userregister.html', {'error':'passwords do not match'})
-        UserRegister.objects.create(name=name, email= email, phone= phone, password= password)
-        return redirect('loginpage')
-    return render(request, 'users/useregister.html')
+        email_error = ""
+        phone_error = ""
+        password_error = ""
 
+        
+        if password != confirm_password:
+            password_error = "Passwords do not match"
+
+        if UserRegister.objects.filter(email=email).exists():
+            email_error = "This email has already been registered."
+
+        if UserRegister.objects.filter(phone=phone).exists():
+            phone_error = "This phone number has already been registered."
+
+        if email_error or phone_error or password_error:
+            return render(request, 'users/userregister.html', {
+                'name': name,
+                'email': email,
+                'phone': phone,
+                'email_error': email_error,
+                'phone_error': phone_error,
+                'password_error': password_error,
+            })
+
+        UserRegister.objects.create(name=name, email=email, phone=phone, password=password)
+        return redirect('loginpage')
+    return render(request, 'users/userregister.html')
 
 
 def loginview(request):
@@ -182,18 +203,49 @@ def order_view(request):
     
     return render(request, 'users/orderview.html',{'orders':orders})
 
+
+# def cancel_order(request, order_id):
+#     user_id= request.session.get('users_id')
+#     if not user_id:
+#         return redirect('userlogin')
+    
+#     user= get_object_or_404(UserRegister, id=user_id)
+#     order= get_object_or_404(Order, id=order_id, user=user)
+
+#     if order.status == 'Pending': order.status = 'Cancelled'
+#     order.save()
+
+#     return redirect('orderview')
+
+
+
+from django.shortcuts import get_object_or_404, redirect
+from .models import Order, UserRegister
+
 def cancel_order(request, order_id):
-    user_id= request.session.get('users_id')
+    user_id = request.session.get('users_id')
     if not user_id:
         return redirect('userlogin')
-    
-    user= get_object_or_404(UserRegister, id=user_id)
-    order= get_object_or_404(Order, id=order_id, user=user)
 
-    if order.status == 'Pending': order.status = 'Cancelled'
-    order.save()
+    user = get_object_or_404(UserRegister, id=user_id)
+    order = get_object_or_404(Order, id=order_id, user=user)
+
+    if order.status == 'Pending':  # only allow cancel if still pending
+        order.status = 'Cancelled'
+        order.save()
 
     return redirect('orderview')
+
+
+
+
+def userlogout(request):
+    del request.session['users_id']
+    return redirect('loginpage')
+
+
+
+
 
 
 

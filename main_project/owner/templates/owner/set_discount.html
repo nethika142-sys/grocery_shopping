@@ -1,16 +1,49 @@
 {% extends "owner/header.html" %}
-
 {% load static %}
 
 {% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <!-- Card Header -->
+        <div class="card-header text-dark text-center" style="background-color:  rgb(240, 156, 97);">
+            <h4 class="mb-0">Set Discount for {{ product.name }}</h4>
+        </div>
 
-<h2>Set discount for {{ product.name }}</h2>
+        <!-- Card Body -->
+        <div class="card-body text-center">
+            <!-- Product Image -->
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" 
+                     class="img-fluid mb-3" style="max-height: 200px; object-fit: contain;">
+            {% else %}
+                <p class="text-muted">No image available</p>
+            {% endif %}
 
-<form method="POST" action="{% url 'set_discount' product.id %}">
-    {% csrf_token %}
-    <label>Discount percent:</label>
-    <input type="number" name="discountpercent" value="{{ product.discountpercent }}">
-    <button type="submit">Save</button>
-</form>
+            <!-- Product details -->
+            <p><strong>Price:</strong> ₹{{ product.price }}</p>
+            <p><strong>Current Discount:</strong> 
+                {% if product.discountpercent %}
+                    {{ product.discountpercent }}%
+                {% else %}
+                    No discount applied
+                {% endif %}
+            </p>
+            {% if product.discountpercent %}
+                <p><strong>Final Price:</strong> ₹{{ product.final_price }}</p>
+            {% endif %}
 
+            <!-- Form -->
+            <form method="POST" action="{% url 'set_discount' product.id %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="discountpercent" class="form-label">Apply Discount Percentage:</label>
+                    <input type="number" name="discountpercent" id="discountpercent"
+                           class="form-control" 
+                           value="{{ product.discountpercent }}">
+                </div>
+                <button type="submit" class="btn" style="background-color: beige;">Save Discount</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

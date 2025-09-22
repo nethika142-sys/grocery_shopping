@@ -24,7 +24,7 @@ from owner import views as owner_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', owner_views.welcome, name= 'ownerroot_welcome'),
+    path('', owner_views.landingpage, name= 'ownerroot_landingpage'),
 
     path('owner/', include('owner.urls')),
 

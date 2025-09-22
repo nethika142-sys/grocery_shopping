@@ -7,11 +7,13 @@
   <div class="row mt-3">
     {% for product in products %}
       <div class="col-md-3 col-sm-6">
-        <div class="card h-100 shadow-sm">
+
+        <div class="card product-card h-100 shadow-sm">
           {% if product.image %}
-            <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
     
           {% endif %}
+
 
           
            <div class="card-body p-2" style="background-color:  rgb(240, 156, 97);">
