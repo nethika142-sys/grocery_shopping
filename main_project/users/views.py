@@ -204,23 +204,6 @@ def order_view(request):
     return render(request, 'users/orderview.html',{'orders':orders})
 
 
-# def cancel_order(request, order_id):
-#     user_id= request.session.get('users_id')
-#     if not user_id:
-#         return redirect('userlogin')
-    
-#     user= get_object_or_404(UserRegister, id=user_id)
-#     order= get_object_or_404(Order, id=order_id, user=user)
-
-#     if order.status == 'Pending': order.status = 'Cancelled'
-#     order.save()
-
-#     return redirect('orderview')
-
-
-
-from django.shortcuts import get_object_or_404, redirect
-from .models import Order, UserRegister
 
 def cancel_order(request, order_id):
     user_id = request.session.get('users_id')
@@ -230,7 +213,7 @@ def cancel_order(request, order_id):
     user = get_object_or_404(UserRegister, id=user_id)
     order = get_object_or_404(Order, id=order_id, user=user)
 
-    if order.status == 'Pending':  # only allow cancel if still pending
+    if order.status == 'Pending':  
         order.status = 'Cancelled'
         order.save()
 

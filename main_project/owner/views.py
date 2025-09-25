@@ -96,7 +96,7 @@ def addproducts(request):
         place= request.POST['place']
         shopname= request.POST['shopname']
         image = request.FILES['imagefile']   
-        category_id = request.POST['category']          # comes from dropdown
+        category_id = request.POST['category']         
 
         product = Products(
             name=name,
@@ -105,7 +105,7 @@ def addproducts(request):
             quantity=quantity,
             place= place,
             shop_name= shopname,
-            image=image,                                # Django saves it into MEDIA_ROOT/products/
+            image=image,                                
             category_id= category_id
         )
         product.save()
@@ -134,7 +134,7 @@ def updateproducts(request, pid):
          product.place= request.POST['place']
          product.shop_name= request.POST['shopname']
 
-         category_id= request.POST['category']                  #update category
+         category_id= request.POST['category']                  
          product.category_id= category_id
 
          if 'imagefile' in request.FILES:
