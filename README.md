@@ -70,7 +70,9 @@ It includes **User**, **Owner**, and **Admin** modules to efficiently handle pro
 
 ---
 
-👩‍💻 Author
-**Nethika EP**
-Python Full Stack Developer 
-Kerala, India
+## 📸 Screenshots
+![welcome Page](screenshots/welcomepage.png)
+![Product List](screenshots/product_listing.png)
+![About Us](screenshots/aboutus.png)
+![Orders](screenshots/orders.png)
+![Admin Dashboard](screenshots/owner_home.png)
