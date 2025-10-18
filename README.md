@@ -81,7 +81,7 @@ It includes **User**, **Owner**, and **Admin** modules to efficiently handle pro
 *About Us page with company info*
 ![About Us](screenshots/aboutus.png)
 
-*Users orsers page with order history*
+*Users orders page with order history*
 ![Orders](screenshots/orders.png)
 
 *Owner Home Page showing dashboards and controls*
