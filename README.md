@@ -71,8 +71,18 @@ It includes **User**, **Owner**, and **Admin** modules to efficiently handle pro
 ---
 
 ## 📸 Screenshots
+
+*welcome page.*
 ![welcome Page](screenshots/welcomepage.png)
+
+*Landing page with navigation and banner.*
 ![Product List](screenshots/product_listing.png)
+
+*About Us page with company info*
 ![About Us](screenshots/aboutus.png)
+
+*Users orsers page with order history*
 ![Orders](screenshots/orders.png)
+
+*Owner Home Page showing dashboards and controls*
 ![Admin Dashboard](screenshots/owner_home.png)
